@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-11-21T13:47:30.954Z",
+  "updated": "2026-11-21T13:56:30.207Z",
   "components": [
     {
       "id": "aurora-badge",
@@ -231,6 +231,19 @@
       "files": [
         "index.css",
         "index.html"
+      ]
+    },
+    {
+      "id": "zz-publish-probe",
+      "name": "Publish Probe",
+      "tag": "Display",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "temporary end-to-end publish test",
+      "scope": "cmp-probe",
+      "files": [
+        "index.html",
+        "index.css"
       ]
     }
   ]
