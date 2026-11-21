@@ -1,0 +1,44 @@
+/* From Uiverse.io by rishichawda — scoped for prism/ui */
+.cmp-theme .theme-toggle {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 7em;
+  cursor: pointer;
+}
+.cmp-theme .toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.cmp-theme .tt-container,
+.cmp-theme .tt-patches,
+.cmp-theme .tt-stars,
+.cmp-theme .tt-button,
+.cmp-theme .tt-sun,
+.cmp-theme .tt-moon,
+.cmp-theme .tt-cloud {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.25s;
+}
+/* night sky background */
+.cmp-theme .toggle-input:checked + svg .tt-container { fill: #2b4360; }
+/* move button to right when checked */
+.cmp-theme .toggle-input:checked + svg .tt-button { transform: translate(28px, 2.333px); }
+/* sun / moon crossfade */
+.cmp-theme .tt-sun { opacity: 1; }
+.cmp-theme .toggle-input:checked + svg .tt-sun { opacity: 0; }
+.cmp-theme .tt-moon { opacity: 0; }
+.cmp-theme .toggle-input:checked + svg .tt-moon { opacity: 1; }
+/* cloud out, stars in */
+.cmp-theme .tt-cloud { opacity: 1; }
+.cmp-theme .toggle-input:checked + svg .tt-cloud { opacity: 0; }
+.cmp-theme .tt-stars { opacity: 0; }
+.cmp-theme .toggle-input:checked + svg .tt-stars { opacity: 1; }
+.cmp-theme .toggle-input:focus-visible + svg {
+  outline: 2px solid #7c5cff;
+  outline-offset: 3px;
+  border-radius: 20px;
+}

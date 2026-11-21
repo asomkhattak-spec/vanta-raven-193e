@@ -1,0 +1,360 @@
+/* From Uiverse.io by marcelodolza — scoped + flattened from CSS nesting for
+   plain-CSS delivery. div/button swapped to span so the label stays valid HTML. */
+.cmp-filament .bulb-area {
+  --ease-elastic: cubic-bezier(0.5, 2, 0.3, 0.8);
+  --ease-elastic-2: cubic-bezier(0.5, -1, 0.3, 0.8);
+  --primary: #ff8800;
+  --rounded-max: 100px;
+  --rounded-min: 10px;
+  --h: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.cmp-filament .bulb-area svg { overflow: visible; }
+.cmp-filament .area-wrapper {
+  position: relative;
+  padding: 20px 5px;
+  cursor: pointer;
+  display: block;
+}
+.cmp-filament .wrapper {
+  display: block;
+  border-radius: 100px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.6s var(--ease-elastic);
+  transform: translateY(-10px) scale(1.02);
+}
+.cmp-filament .area-wrapper:hover .wrapper { transform: translateY(0) scale(1); }
+.cmp-filament .wrapper input {
+  position: absolute;
+  background: transparent;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  z-index: 10;
+  cursor: pointer;
+  pointer-events: all;
+  user-select: none;
+  outline: none;
+  margin: 0;
+}
+.cmp-filament .filament-button {
+  background: transparent;
+  display: flex;
+  border: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.cmp-filament .filament-button::before {
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 25%;
+  width: 70%;
+  height: 100%;
+  margin: auto;
+  border-radius: 0 50% 50% 0;
+  position: absolute;
+  pointer-events: none;
+  background: linear-gradient(to right, var(--primary) 0%, transparent 100%);
+  z-index: 1;
+  filter: blur(30px);
+  mix-blend-mode: color-dodge;
+  transition: all 1s ease 0.4s;
+  opacity: 0;
+}
+.cmp-filament .filament-button::after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  top: 0;
+  bottom: 0;
+  left: 28%;
+  margin: auto;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  background: var(--primary);
+  z-index: 2;
+  filter: blur(15px);
+  mix-blend-mode: color-dodge;
+  transition: all 1s ease 0.4s;
+  opacity: 0;
+}
+.cmp-filament .part-1 {
+  position: relative;
+  z-index: 1;
+  height: var(--h);
+  width: 80px;
+  display: block;
+  border-radius: var(--rounded-max) var(--rounded-min) var(--rounded-min) var(--rounded-max);
+}
+.cmp-filament .part-1 .line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -1px;
+  transition: all 0.4s ease;
+}
+.cmp-filament .part-1 .line::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  content: "";
+  width: 1px;
+  background: white;
+  box-shadow: 1px 0 10px 3px #ffa600;
+  border-radius: 50%;
+  height: 0%;
+  margin: auto;
+  animation: filamentLine 1.8s ease infinite;
+}
+.cmp-filament .part-1 .screw {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: -1;
+  overflow: hidden;
+  padding: 10px 0;
+  display: block;
+}
+.cmp-filament .part-1 .screw svg { width: auto; height: 60px; }
+.cmp-filament .part-1 .screw g { transform-origin: center; }
+.cmp-filament .part-1 .screw .dot { color: #8e8c8b; }
+.cmp-filament .part-1 .case {
+  height: var(--h);
+  width: 80px;
+  border-radius: inherit;
+  transform: translateX(-40px);
+  transition: all 0.9s var(--ease-elastic);
+  display: block;
+  position: relative;
+}
+.cmp-filament .part-1 .case .mask {
+  position: absolute;
+  overflow: hidden;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, #2c2e31 0%, #31343e 20%, #212329 100%);
+  box-shadow:
+    inset 8px -15px 15px -10px black,
+    inset 10px -17px 12px -12px white,
+    0 30px 70px -5px #111;
+  transition: all 0.9s var(--ease-elastic);
+  display: block;
+}
+.cmp-filament .area-wrapper:hover .case .mask {
+  box-shadow:
+    inset 8px -15px 15px -10px black,
+    inset 10px -17px 12px -12px white,
+    0 20px 50px -5px #111;
+}
+.cmp-filament .part-1 .case .mask::before {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  left: 30%;
+  top: 23%;
+  width: 100%;
+  height: 30%;
+  background: white;
+  filter: blur(12px);
+}
+.cmp-filament .part-1 .case .mask::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  mix-blend-mode: overlay;
+}
+.cmp-filament .part-2 {
+  position: relative;
+  height: var(--h);
+  width: 190px;
+  border-radius: var(--rounded-min) var(--rounded-max) var(--rounded-max) var(--rounded-min);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s ease;
+}
+.cmp-filament .part-2 .glass {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  transition: all 0.9s var(--ease-elastic);
+  border-radius: inherit;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(0, 0, 0, 0.5) 100%);
+  box-shadow:
+    inset 0 0 7px -4px white,
+    inset 0 -10px 10px -8px rgba(255, 255, 255, 0.4),
+    inset 8px -15px 15px -10px black,
+    inset 8px -10px 12px -12px white,
+    0 30px 70px -5px #111;
+  display: block;
+}
+.cmp-filament .area-wrapper:hover .part-2 .glass {
+  box-shadow:
+    inset 0 0 7px -4px white,
+    inset 0 -10px 10px -8px rgba(255, 255, 255, 0.4),
+    inset 8px -15px 15px -10px black,
+    inset 8px -10px 12px -12px white,
+    0 20px 50px -5px #111;
+}
+.cmp-filament .part-2 .glass::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  right: 14%;
+  height: 70%;
+  border-radius: 0 25px 0 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 60%);
+}
+.cmp-filament .part-2 .glass::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 15%;
+  right: 5%;
+  height: 75%;
+  border-radius: 0 30px 30px 0;
+  box-shadow: inset -2px -6px 5px -5px rgba(255, 255, 255, 0.8);
+  filter: blur(3px);
+}
+.cmp-filament .glass-reflex {
+  position: absolute;
+  inset: 0;
+  width: 70%;
+  border-radius: 0 50% 50% 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.2) 100%);
+  transform: translateX(-115%) skewX(30deg);
+  display: block;
+}
+.cmp-filament .glass-noise { position: absolute; inset: 0; opacity: 0.2; }
+.cmp-filament .path-glass {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.6s linear;
+  opacity: 0;
+}
+.cmp-filament .path-glass path {
+  stroke-dashoffset: 430;
+  stroke-dasharray: 430 430;
+  animation: filamentPathGlass 1.4s ease infinite;
+}
+@keyframes filamentPathGlass {
+  0% { stroke-dasharray: 430 430; color: greenyellow; opacity: 1; filter: blur(2px); }
+  50% { stroke-dasharray: 860 430; opacity: 1; filter: blur(4px); }
+  100% { stroke-dasharray: 860 430; color: var(--primary); opacity: 0; }
+}
+.cmp-filament .filament {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: auto;
+  height: 26px;
+  stroke-width: 2px;
+  opacity: 0.3;
+}
+.cmp-filament .filament path { transition: all 0.6s ease-in-out; }
+.cmp-filament .filament-on { opacity: 1; }
+.cmp-filament .filament-on path { stroke-dashoffset: 100; stroke-dasharray: 100 100; }
+.cmp-filament .filament-blur { opacity: 1; filter: blur(8px); color: rgb(255, 208, 0); stroke-width: 10px; }
+.cmp-filament .text {
+  transition: all 0.3s ease;
+  transform: translateY(-4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.16em;
+  position: absolute;
+  inset: 0;
+}
+.cmp-filament .text span { display: block; color: transparent; position: relative; }
+.cmp-filament .text.state-1 span:nth-child(3) { margin-right: 5px; }
+.cmp-filament .text.state-2 span:nth-child(4),
+.cmp-filament .text.state-2 span:nth-child(6) { margin-right: 5px; }
+.cmp-filament .text span::before,
+.cmp-filament .text span::after {
+  content: attr(data-label);
+  position: absolute;
+  font-size: 18px;
+  left: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+.cmp-filament .text span::before { opacity: 0; transform: translateY(-100%); }
+.cmp-filament .area-wrapper input:checked ~ .filament-button .filament path { transition-delay: 0.6s; }
+.cmp-filament .area-wrapper:hover input:checked ~ .filament-button .filament path { stroke-dasharray: 100 0; }
+.cmp-filament .area-wrapper input:checked ~ .filament-button .part-1 .case {
+  transform: translateX(0px);
+  transition: all 1.25s var(--ease-elastic-2);
+}
+.cmp-filament .area-wrapper:hover input:checked ~ .filament-button::before,
+.cmp-filament .area-wrapper:hover input:checked ~ .filament-button::after,
+.cmp-filament .area-wrapper:hover input:checked ~ .filament-button .path-glass { opacity: 1; }
+.cmp-filament .area-wrapper:hover .filament-button .part-1 .line { opacity: 0; }
+.cmp-filament .area-wrapper input:not(:checked) ~ .filament-button .part-1 .line::before {
+  box-shadow: 1px 0 10px 3px rgba(255, 220, 145, 0.4);
+  background: rgb(140, 140, 140);
+}
+.cmp-filament .area-wrapper:hover .glass-reflex { animation: filamentReflex 0.6s ease; }
+.cmp-filament .area-wrapper:hover .text span::before {
+  animation: filamentCharIn 1s ease calc(var(--i) * 0.03s) forwards;
+}
+.cmp-filament .area-wrapper:hover .text span::after,
+.cmp-filament .area-wrapper input:not(:checked) ~ .filament-button .text.state-1 span::before,
+.cmp-filament .area-wrapper input:not(:checked) ~ .filament-button .text.state-1 span::after,
+.cmp-filament .area-wrapper input:checked ~ .filament-button .text.state-2 span::before,
+.cmp-filament .area-wrapper input:checked ~ .filament-button .text.state-2 span::after {
+  opacity: 0;
+  animation: filamentCharOut 1.3s ease calc(var(--i) * 0.04s) backwards;
+}
+.cmp-filament .area-wrapper input:not(:checked) ~ .filament-button .part-1 .screw g {
+  animation: filamentPulse 0.8s ease calc(var(--i) * 0.1s) backwards;
+}
+.cmp-filament .area-wrapper input:checked ~ .filament-button .part-1 .screw g {
+  animation: filamentPulse 0.8s ease calc((5 - var(--i)) * 0.2s) backwards;
+}
+.cmp-filament .area-wrapper input:not(:checked) ~ .filament-button .part-1 .screw .dot {
+  animation: filamentDot 0.7s ease calc(var(--i) * 0.15s) backwards;
+}
+.cmp-filament .area-wrapper input:checked ~ .filament-button .part-1 .screw .dot {
+  animation: filamentDotOut 0.7s ease calc((3 - var(--i)) * 0.15s) forwards;
+}
+@keyframes filamentLine {
+  0% { height: 0%; opacity: 1; }
+  50% { height: 100%; opacity: 1; }
+  100% { height: 140%; opacity: 0; }
+}
+@keyframes filamentDot { 30% { color: var(--primary); filter: blur(2px); } }
+@keyframes filamentDotOut { 40% { color: white; filter: blur(2px); } }
+@keyframes filamentPulse { 30% { transform: scaleY(0.8); } }
+@keyframes filamentCharIn {
+  0% { opacity: 0; transform: scale(10) translateX(-25%); filter: blur(10px); color: rgb(0, 251, 255); }
+  25% { transform: translateY(-15%); opacity: 1; filter: blur(1px); color: var(--primary); }
+  50% { transform: translateY(7%); opacity: 1; filter: blur(0); }
+  100% { transform: translateY(0); opacity: 1; filter: blur(0); }
+}
+@keyframes filamentCharOut {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-70%); opacity: 0; filter: blur(4px); }
+}
+@keyframes filamentReflex {
+  0% { transform: translateX(-115%) skewX(30deg); }
+  100% { transform: translateX(140%) skewX(30deg); }
+}

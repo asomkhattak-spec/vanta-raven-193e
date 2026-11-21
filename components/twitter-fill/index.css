@@ -1,0 +1,44 @@
+/* From Uiverse.io by mrhyddenn — scoped for prism/ui */
+.cmp-twitter .twitter-button {
+  background: transparent;
+  position: relative;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgb(40, 144, 241);
+  border-radius: 25px;
+  outline: none;
+  overflow: hidden;
+  color: rgb(40, 144, 241);
+  transition: color 0.3s 0.1s ease-out;
+  text-align: center;
+  isolation: isolate;
+}
+.cmp-twitter .twitter-button span { margin: 10px; }
+.cmp-twitter .twitter-button::before {
+  position: absolute;
+  top: 0;
+  left: -5em;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  content: '';
+  border-radius: 50%;
+  display: block;
+  width: 20em;
+  height: 20em;
+  text-align: center;
+  transition: box-shadow 0.5s ease-out;
+  z-index: -1;
+}
+.cmp-twitter .twitter-button:hover {
+  color: #fff;
+  border: 1px solid rgb(40, 144, 241);
+}
+.cmp-twitter .twitter-button:hover::before {
+  box-shadow: inset 0 0 0 10em rgb(40, 144, 241);
+}

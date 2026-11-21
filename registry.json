@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "updated": "2026-11-21T13:26:59.342Z",
+  "components": [
+    {
+      "id": "bulb-switch",
+      "name": "Lightbulb Switch",
+      "tag": "Inputs",
+      "author": "JkHuger",
+      "source": "https://uiverse.io/JkHuger",
+      "description": "A toggle whose knob is a lightbulb with a threaded screw base; it flips 180° and lights up warm yellow when on.",
+      "files": [
+        "index.css",
+        "index.html"
+      ]
+    },
+    {
+      "id": "day-night-toggle",
+      "name": "Day / Night Toggle",
+      "tag": "Inputs",
+      "author": "rishichawda",
+      "source": "https://uiverse.io/rishichawda",
+      "description": "Pure-SVG theme switch: sun sets into a cratered moon, cloud fades out, eight stars fade in, sky shifts to night blue.",
+      "files": [
+        "index.css",
+        "index.html"
+      ]
+    },
+    {
+      "id": "filament-button",
+      "name": "Filament Bulb Button",
+      "tag": "Buttons",
+      "author": "marcelodolza",
+      "source": "https://uiverse.io/marcelodolza",
+      "description": "Skeuomorphic lightbulb: steel screw base, glass envelope with noise + specular reflex, glowing filament wires up when checked. Get Started flips to Time to Shine.",
+      "files": [
+        "index.css",
+        "index.html"
+      ]
+    },
+    {
+      "id": "retro-press",
+      "name": "Retro Press Button",
+      "tag": "Buttons",
+      "author": "arthur_6104",
+      "source": "https://uiverse.io/arthur_6104",
+      "description": "Physical keycap: a gray base shows as depth, and :active collapses the padding so the face presses down 10px.",
+      "files": [
+        "index.css",
+        "index.html"
+      ]
+    },
+    {
+      "id": "send-message",
+      "name": "Send Message Button",
+      "tag": "Buttons",
+      "author": "marcelodolza",
+      "source": "https://uiverse.io/marcelodolza",
+      "description": "Neumorphic button: letters cascade in, paper plane takes off with a contrail on send, check-mark Sent state lands. Improved: JS class state instead of :focus so it survives blur.",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ]
+    },
+    {
+      "id": "twitter-fill",
+      "name": "Circle Fill Button",
+      "tag": "Buttons",
+      "author": "mrhyddenn",
+      "source": "https://uiverse.io/mrhyddenn",
+      "description": "Outlined social button; a giant circle's inset shadow floods the fill from the center on hover.",
+      "files": [
+        "index.css",
+        "index.html"
+      ]
+    },
+    {
+      "id": "you-loader",
+      "name": "YOU Stroke Loader",
+      "tag": "Feedback",
+      "author": "SelfMadeSystem",
+      "source": "https://uiverse.io/SelfMadeSystem",
+      "description": "Three letters drawn in animated gradient strokes; the O spins with an eased 8s rotation cycle.",
+      "files": [
+        "index.css",
+        "index.html"
+      ]
+    }
+  ]
+}
