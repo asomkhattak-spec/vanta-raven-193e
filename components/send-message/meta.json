@@ -1,1 +1,9 @@
-{"id": "send-message", "name": "Send Message Button", "tag": "Buttons", "author": "marcelodolza", "source": "https://uiverse.io/marcelodolza", "description": "Neumorphic button: letters cascade in, paper plane takes off with a contrail on send, check-mark Sent state lands. Improved: JS class state instead of :focus so it survives blur."}
+{
+  "id": "send-message",
+  "name": "Send Message Button",
+  "tag": "Buttons",
+  "author": "marcelodolza",
+  "source": "https://uiverse.io/marcelodolza",
+  "description": "Neumorphic button: letters cascade in, paper plane takes off with a contrail on send, check-mark Sent state lands. Improved: JS class state instead of :focus so it survives blur.",
+  "scope": "cmp-send"
+}

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-11-21T13:26:59.342Z",
+  "updated": "2026-11-21T13:28:47.860Z",
   "components": [
     {
       "id": "bulb-switch",
@@ -9,6 +9,7 @@
       "author": "JkHuger",
       "source": "https://uiverse.io/JkHuger",
       "description": "A toggle whose knob is a lightbulb with a threaded screw base; it flips 180° and lights up warm yellow when on.",
+      "scope": "cmp-bulb",
       "files": [
         "index.css",
         "index.html"
@@ -21,6 +22,7 @@
       "author": "rishichawda",
       "source": "https://uiverse.io/rishichawda",
       "description": "Pure-SVG theme switch: sun sets into a cratered moon, cloud fades out, eight stars fade in, sky shifts to night blue.",
+      "scope": "cmp-theme",
       "files": [
         "index.css",
         "index.html"
@@ -33,6 +35,7 @@
       "author": "marcelodolza",
       "source": "https://uiverse.io/marcelodolza",
       "description": "Skeuomorphic lightbulb: steel screw base, glass envelope with noise + specular reflex, glowing filament wires up when checked. Get Started flips to Time to Shine.",
+      "scope": "cmp-filament",
       "files": [
         "index.css",
         "index.html"
@@ -45,6 +48,7 @@
       "author": "arthur_6104",
       "source": "https://uiverse.io/arthur_6104",
       "description": "Physical keycap: a gray base shows as depth, and :active collapses the padding so the face presses down 10px.",
+      "scope": "cmp-press",
       "files": [
         "index.css",
         "index.html"
@@ -57,6 +61,7 @@
       "author": "marcelodolza",
       "source": "https://uiverse.io/marcelodolza",
       "description": "Neumorphic button: letters cascade in, paper plane takes off with a contrail on send, check-mark Sent state lands. Improved: JS class state instead of :focus so it survives blur.",
+      "scope": "cmp-send",
       "files": [
         "index.css",
         "index.html",
@@ -70,6 +75,7 @@
       "author": "mrhyddenn",
       "source": "https://uiverse.io/mrhyddenn",
       "description": "Outlined social button; a giant circle's inset shadow floods the fill from the center on hover.",
+      "scope": "cmp-twitter",
       "files": [
         "index.css",
         "index.html"
@@ -82,6 +88,7 @@
       "author": "SelfMadeSystem",
       "source": "https://uiverse.io/SelfMadeSystem",
       "description": "Three letters drawn in animated gradient strokes; the O spins with an eased 8s rotation cycle.",
+      "scope": "cmp-you",
       "files": [
         "index.css",
         "index.html"

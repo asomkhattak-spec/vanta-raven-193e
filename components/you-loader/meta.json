@@ -1,1 +1,9 @@
-{"id": "you-loader", "name": "YOU Stroke Loader", "tag": "Feedback", "author": "SelfMadeSystem", "source": "https://uiverse.io/SelfMadeSystem", "description": "Three letters drawn in animated gradient strokes; the O spins with an eased 8s rotation cycle."}
+{
+  "id": "you-loader",
+  "name": "YOU Stroke Loader",
+  "tag": "Feedback",
+  "author": "SelfMadeSystem",
+  "source": "https://uiverse.io/SelfMadeSystem",
+  "description": "Three letters drawn in animated gradient strokes; the O spins with an eased 8s rotation cycle.",
+  "scope": "cmp-you"
+}

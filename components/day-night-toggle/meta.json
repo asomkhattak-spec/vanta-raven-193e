@@ -1,1 +1,9 @@
-{"id": "day-night-toggle", "name": "Day / Night Toggle", "tag": "Inputs", "author": "rishichawda", "source": "https://uiverse.io/rishichawda", "description": "Pure-SVG theme switch: sun sets into a cratered moon, cloud fades out, eight stars fade in, sky shifts to night blue."}
+{
+  "id": "day-night-toggle",
+  "name": "Day / Night Toggle",
+  "tag": "Inputs",
+  "author": "rishichawda",
+  "source": "https://uiverse.io/rishichawda",
+  "description": "Pure-SVG theme switch: sun sets into a cratered moon, cloud fades out, eight stars fade in, sky shifts to night blue.",
+  "scope": "cmp-theme"
+}

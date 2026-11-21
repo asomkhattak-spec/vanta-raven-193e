@@ -1,1 +1,9 @@
-{"id": "retro-press", "name": "Retro Press Button", "tag": "Buttons", "author": "arthur_6104", "source": "https://uiverse.io/arthur_6104", "description": "Physical keycap: a gray base shows as depth, and :active collapses the padding so the face presses down 10px."}
+{
+  "id": "retro-press",
+  "name": "Retro Press Button",
+  "tag": "Buttons",
+  "author": "arthur_6104",
+  "source": "https://uiverse.io/arthur_6104",
+  "description": "Physical keycap: a gray base shows as depth, and :active collapses the padding so the face presses down 10px.",
+  "scope": "cmp-press"
+}
