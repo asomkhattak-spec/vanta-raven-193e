@@ -1,0 +1,1 @@
+{"id": "flip-clock", "name": "Flip Clock", "tag": "Display", "author": "prism/ui", "source": "https://github.com/asomkhattak-spec/vanta-raven-193e", "description": "A live HH:MM:SS split-flap clock with six folding digit cards, a two-stage 300ms flap animation, and instant swaps under reduced motion.", "scope": "cmp-flip"}

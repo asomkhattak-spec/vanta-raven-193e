@@ -1,0 +1,1 @@
+{"id": "elastic-slider", "name": "Elastic Slider", "tag": "Inputs", "author": "prism/ui", "source": "https://github.com/asomkhattak-spec/vanta-raven-193e", "description": "An accessible range slider with a violet gradient fill, an elastic thumb that stretches while dragging, and a floating value bubble that springs in above it.", "scope": "cmp-slider"}

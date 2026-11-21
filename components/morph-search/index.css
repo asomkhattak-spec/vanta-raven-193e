@@ -1,0 +1,198 @@
+/* morph-search — prism/ui
+   Width morph is the single layout animation (one cheap element);
+   everything else animates transform/opacity only. */
+
+.cmp-search {
+  --cmp-search-accent: #22d3ee;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background: #12121a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cmp-search *,
+.cmp-search *::before,
+.cmp-search *::after {
+  box-sizing: border-box;
+}
+
+.cmp-search.is-open {
+  width: 260px;
+}
+
+/* Cyan glow ring — static shadow, animated via opacity only. */
+.cmp-search::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 23px;
+  border: 1px solid rgba(34, 211, 238, 0.65);
+  box-shadow:
+    0 0 0 3px rgba(34, 211, 238, 0.14),
+    0 0 18px rgba(34, 211, 238, 0.22);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.cmp-search:focus-within::before {
+  opacity: 1;
+}
+
+/* Trigger — 44px hit target, anchored left; the pill grows rightward
+   so the magnifier reads as sliding to the leading edge. */
+.cmp-search__trigger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 22px;
+  color: #a3a3b2;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cmp-search__trigger:focus {
+  outline: none;
+}
+
+.cmp-search__icon {
+  display: block;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.cmp-search__trigger:hover .cmp-search__icon,
+.cmp-search__trigger:focus-visible .cmp-search__icon {
+  opacity: 1;
+}
+
+.cmp-search.is-open .cmp-search__trigger {
+  transform: translateX(-1px) scale(0.94);
+}
+
+/* Input — hidden via visibility so it leaves the tab order and
+   accessibility tree while collapsed. */
+.cmp-search__input {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 42px;
+  right: 42px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: #ececf2;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  caret-color: var(--cmp-search-accent);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s ease, visibility 0s linear 0.12s;
+}
+
+.cmp-search.is-open .cmp-search__input {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease 0.14s, visibility 0s;
+}
+
+.cmp-search__input::placeholder {
+  color: rgba(236, 236, 242, 0.32);
+  font-weight: 400;
+}
+
+.cmp-search__input::-webkit-search-cancel-button,
+.cmp-search__input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Clear — appears only when open with a value. */
+.cmp-search__clear {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 0;
+  border-radius: 16px;
+  color: #a3a3b2;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.6);
+  pointer-events: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+}
+
+.cmp-search.is-open.has-value .cmp-search__clear {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  pointer-events: auto;
+  transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s;
+  animation: search-pop 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cmp-search__clear:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ececf2;
+}
+
+.cmp-search__clear:focus {
+  outline: none;
+}
+
+.cmp-search__clear:focus-visible {
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.65);
+}
+
+@keyframes search-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-search,
+  .cmp-search::before,
+  .cmp-search__trigger,
+  .cmp-search__icon,
+  .cmp-search__input,
+  .cmp-search.is-open .cmp-search__input,
+  .cmp-search__clear,
+  .cmp-search.is-open.has-value .cmp-search__clear {
+    transition-duration: 0.01ms;
+    transition-delay: 0s;
+    animation: none;
+  }
+}

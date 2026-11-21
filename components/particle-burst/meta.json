@@ -1,0 +1,1 @@
+{"id": "particle-burst", "name": "Particle Burst Button", "tag": "Buttons", "author": "prism/ui", "source": "https://github.com/asomkhattak-spec/vanta-raven-193e", "description": "A violet-gradient Celebrate button that fires a pooled, gravity-driven confetti burst and ring shockwave on click, hard-capped at 80 live particles.", "scope": "cmp-burst"}

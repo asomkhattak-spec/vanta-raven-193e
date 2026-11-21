@@ -1,0 +1,1 @@
+{"id": "terminal-window", "name": "Terminal Typing", "tag": "Display", "author": "prism/ui", "source": "https://github.com/asomkhattak-spec/vanta-raven-193e", "description": "A mini macOS terminal that types a prism-ui install command with human-like jitter, prints green-check output lines, and loops on a blinking block cursor.", "scope": "cmp-term"}

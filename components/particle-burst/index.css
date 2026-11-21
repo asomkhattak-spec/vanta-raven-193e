@@ -1,0 +1,116 @@
+/* particle-burst — scoped to .cmp-burst, transform/opacity animation only */
+
+.cmp-burst {
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+  padding: 24px;
+  background: #0b0b10;
+  border-radius: 16px;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.cmp-burst__stage {
+  position: relative;
+  display: inline-block;
+}
+
+.cmp-burst__btn {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  padding: 13px 30px;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: linear-gradient(135deg, #9d7bff 0%, #7c5cff 48%, #5b34e6 100%);
+  box-shadow: 0 6px 22px rgba(124, 92, 255, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transition: transform 0.16s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.cmp-burst__btn:hover {
+  transform: translateY(-1px);
+}
+
+.cmp-burst__btn:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 3px;
+}
+
+.cmp-burst__btn.is-punching {
+  animation: burstPunch 0.28s cubic-bezier(0.3, 1.6, 0.4, 1);
+}
+
+.cmp-burst__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.cmp-burst__particle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.cmp-burst__ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  border: 2px solid rgba(124, 92, 255, 0.85);
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@keyframes burstPunch {
+  0% {
+    transform: scale(0.94);
+  }
+  55% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes burstPulse {
+  0% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-burst__particles {
+    display: none;
+  }
+  .cmp-burst__btn {
+    transition: none;
+  }
+  .cmp-burst__btn:hover {
+    transform: none;
+  }
+  .cmp-burst__btn.is-punching {
+    animation: burstPulse 0.32s ease-out;
+  }
+}

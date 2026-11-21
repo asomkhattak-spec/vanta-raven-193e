@@ -1,0 +1,1 @@
+{"id": "spotlight-card", "name": "Spotlight Card", "tag": "Cards", "author": "prism/ui", "source": "https://github.com/asomkhattak-spec/vanta-raven-193e", "description": "A dark glass card whose cursor-tracking radial spotlight washes the surface and ignites a matching 1px border glow, fading out smoothly on pointer leave.", "scope": "cmp-spotlight"}

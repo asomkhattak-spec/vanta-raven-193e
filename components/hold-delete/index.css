@@ -1,0 +1,271 @@
+/* hold-delete — prism/ui · destructive confirm · scope: .cmp-hold */
+
+.cmp-hold {
+  --hold-bg: #0b0b10;
+  --hold-surface: #14141d;
+  --hold-border: #262633;
+  --hold-border-hot: #4a2530;
+  --hold-text: #e8e8f0;
+  --hold-muted: #6b6b7e;
+  --hold-red: #ff5569;
+  --hold-red-deep: #d63a52;
+  --hold-red-glow: rgba(255, 85, 105, 0.35);
+  --hold-progress: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 320px;
+  min-height: 200px;
+  padding: 24px;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 85, 105, 0.05) 0%, rgba(255, 85, 105, 0) 55%),
+    var(--hold-bg);
+  font-family: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.cmp-hold *,
+.cmp-hold *::before,
+.cmp-hold *::after {
+  box-sizing: border-box;
+}
+
+.cmp-hold__btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 252px;
+  height: 54px;
+  margin: 0;
+  padding: 0 20px;
+  border: 1px solid var(--hold-border);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #181822 0%, var(--hold-surface) 100%);
+  color: var(--hold-text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: scale(1);
+  transition:
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.cmp-hold__btn:focus-visible {
+  outline: 2px solid var(--hold-red);
+  outline-offset: 3px;
+}
+
+.cmp-hold__btn:active {
+  transform: scale(0.975);
+}
+
+/* progress fill — driven by --hold-progress from the rAF loop */
+.cmp-hold__fill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--hold-red-deep) 0%, var(--hold-red) 100%);
+  transform: scaleX(var(--hold-progress));
+  transform-origin: left center;
+  opacity: 0.92;
+  transition:
+    transform 460ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 320ms ease;
+  will-change: transform;
+}
+
+.cmp-hold__fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.55);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.cmp-hold__btn.is-holding {
+  border-color: var(--hold-border-hot);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 8px 28px rgba(0, 0, 0, 0.5),
+    0 0 24px var(--hold-red-glow);
+}
+
+.cmp-hold__btn.is-holding .cmp-hold__fill {
+  transition: opacity 320ms ease;
+}
+
+.cmp-hold__btn.is-holding .cmp-hold__fill::after {
+  opacity: 1;
+}
+
+.cmp-hold__label {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  transition: opacity 160ms ease;
+}
+
+.cmp-hold__btn.is-holding .cmp-hold__label {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.cmp-hold__btn.is-swapping .cmp-hold__label {
+  animation: holdLabelIn 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* success emblem — large ghost check popping behind the label */
+.cmp-hold__check {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  color: #ffffff;
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+.cmp-hold__btn.is-done {
+  border-color: var(--hold-red);
+  cursor: default;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 8px 28px rgba(0, 0, 0, 0.5),
+    0 0 32px var(--hold-red-glow);
+}
+
+.cmp-hold__btn.is-done:active {
+  transform: scale(1);
+}
+
+.cmp-hold__btn.is-done .cmp-hold__fill {
+  opacity: 1;
+}
+
+.cmp-hold__btn.is-done .cmp-hold__check {
+  animation: holdPop 520ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.cmp-hold__btn.is-done .cmp-hold__label {
+  animation: holdLabelIn 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+/* early release past 30% — subtle shake */
+.cmp-hold__btn.is-shake {
+  animation: holdShake 340ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.cmp-hold__hint {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--hold-muted);
+  transition: opacity 200ms ease;
+}
+
+.cmp-hold:has(.cmp-hold__btn.is-holding) .cmp-hold__hint,
+.cmp-hold:has(.cmp-hold__btn.is-done) .cmp-hold__hint {
+  opacity: 0.45;
+}
+
+@keyframes holdPop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  55% {
+    opacity: 0.22;
+    transform: scale(1.22);
+  }
+  78% {
+    transform: scale(0.94);
+  }
+  100% {
+    opacity: 0.16;
+    transform: scale(1);
+  }
+}
+
+@keyframes holdShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  18% {
+    transform: translateX(-5px);
+  }
+  38% {
+    transform: translateX(4px);
+  }
+  58% {
+    transform: translateX(-3px);
+  }
+  78% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes holdLabelIn {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-hold__btn,
+  .cmp-hold__fill,
+  .cmp-hold__fill::after,
+  .cmp-hold__label,
+  .cmp-hold__hint {
+    transition: none;
+  }
+  .cmp-hold__btn:active {
+    transform: scale(1);
+  }
+  .cmp-hold__btn.is-shake {
+    animation: none;
+  }
+  .cmp-hold__btn.is-swapping .cmp-hold__label,
+  .cmp-hold__btn.is-done .cmp-hold__label {
+    animation: none;
+  }
+  .cmp-hold__btn.is-done .cmp-hold__check {
+    animation: none;
+    opacity: 0.16;
+    transform: scale(1);
+  }
+}

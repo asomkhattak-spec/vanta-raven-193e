@@ -1,0 +1,1 @@
+{"id": "magnetic-button", "name": "Magnetic Button", "tag": "Buttons", "author": "prism/ui", "source": "https://github.com/asomkhattak-spec/vanta-raven-193e", "description": "A pill button that magnetically drifts toward the cursor with a parallax inner label and a pointer-following radial sheen, then springs back to rest on leave.", "scope": "cmp-magnetic"}

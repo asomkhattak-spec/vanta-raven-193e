@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Aurora Badge — prism/ui
+   Scope: .cmp-aurora · pure CSS, no JS, no external assets.
+
+   Rotation strategy (two cooperating mechanisms, no background-position):
+   1. The crisp 1.5px ring is an oversized conic-gradient square clipped to a
+      pill, spun with `transform: rotate()` (compositor-only, works everywhere).
+   2. The ambient glow reuses the same sweep and turns its gradient angle via
+      the registered `@property --aurora-angle` keyframes where supported.
+      Browsers without @property interpolate the unregistered angle discretely
+      (0deg -> 360deg are the same heading), so the glow simply stays put while
+      it pulses — a graceful, invisible fallback.
+   ========================================================================== */
+
+@property --aurora-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Stage ------------------------------------------------------------------ */
+.cmp-aurora {
+  display: grid;
+  place-items: center;
+  padding: 40px 16px;
+  /* Transparent: sits on the registry's #0b0b10 canvas. */
+}
+
+/* Badge shell ------------------------------------------------------------ */
+.cmp-aurora__badge {
+  /* One shared, banding-free sweep: violet -> cyan -> pink -> violet.
+     First and last stops match so the conic wraps with no seam. */
+  --aurora-sweep: conic-gradient(
+    from var(--aurora-angle, 0deg),
+    #7c3aed 0deg,
+    #8b5cf6 38deg,
+    #6366f1 78deg,
+    #38bdf8 112deg,
+    #22d3ee 142deg,
+    #67e8f9 172deg,
+    #818cf8 206deg,
+    #a78bfa 236deg,
+    #ec4899 268deg,
+    #f472b6 300deg,
+    #d946ef 328deg,
+    #a855f7 348deg,
+    #7c3aed 360deg
+  );
+
+  position: relative;
+  display: inline-flex;
+  isolation: isolate;              /* keep the -1 glow inside the badge */
+  padding: 1.5px;                  /* this padding IS the ring thickness */
+  border-radius: 999px;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ambient glow: blurred duplicate of the sweep behind the pill ----------- */
+.cmp-aurora__badge::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--aurora-sweep);
+  filter: blur(14px);
+  opacity: 0.5;
+  animation:
+    aurora-pulse 4s ease-in-out infinite,
+    aurora-angle 6s linear infinite;
+  will-change: opacity;
+}
+
+/* Ring window: clips the spinning square to the pill silhouette ---------- */
+.cmp-aurora__ring {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* The rotating aurora square (transform-only, universal fallback) -------- */
+.cmp-aurora__ring::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220%;                     /* side > pill diagonal at every heading */
+  aspect-ratio: 1 / 1;
+  background: var(--aurora-sweep);
+  animation: aurora-spin 6s linear infinite;
+  will-change: transform;
+}
+
+/* Inner fill + label ----------------------------------------------------- */
+.cmp-aurora__fill {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px 7px 12px;
+  border-radius: 999px;
+  background: #0d0d13;
+  white-space: nowrap;
+}
+
+.cmp-aurora__star {
+  color: #67e8f9;
+  font-size: 12px;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(103, 232, 249, 0.45);
+}
+
+.cmp-aurora__label {
+  color: #ffffff;
+}
+
+/* Keyframes (aurora*) ---------------------------------------------------- */
+@keyframes aurora-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0turn);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+
+@keyframes aurora-angle {
+  to {
+    --aurora-angle: 360deg;
+  }
+}
+
+@keyframes aurora-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Reduced motion: static gradient, no spin, no pulse --------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .cmp-aurora__ring::before,
+  .cmp-aurora__badge::before {
+    animation: none;
+  }
+  .cmp-aurora__badge::before {
+    opacity: 0.45;
+  }
+}

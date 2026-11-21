@@ -1,0 +1,133 @@
+/* terminal-window — prism/ui — all selectors scoped to .cmp-term */
+
+.cmp-term {
+  box-sizing: border-box;
+  width: 280px;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: #0a0a10;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 12px 32px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #e8e8f0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.cmp-term *,
+.cmp-term *::before,
+.cmp-term *::after {
+  box-sizing: border-box;
+}
+
+/* screen-reader summary */
+.cmp-term .cmp-term__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* title bar */
+.cmp-term .cmp-term__chrome {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  background: linear-gradient(180deg, #1b1b24 0%, #14141c 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cmp-term .cmp-term__dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.cmp-term .cmp-term__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.35) inset;
+}
+
+.cmp-term .cmp-term__dot--red    { background: #ff5f57; }
+.cmp-term .cmp-term__dot--yellow { background: #febc2e; }
+.cmp-term .cmp-term__dot--green  { background: #28c840; }
+
+.cmp-term .cmp-term__title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  color: #8b8b9e;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* terminal body */
+.cmp-term .cmp-term__body {
+  height: calc(100% - 28px);
+  padding: 9px 12px;
+  background: #0a0a10;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.cmp-term .cmp-term__line {
+  display: block;
+  min-height: 19px;
+  white-space: pre;
+}
+
+.cmp-term .cmp-term__prompt {
+  color: #22d3ee;
+}
+
+.cmp-term .cmp-term__cmd {
+  color: #f2f2f7;
+}
+
+.cmp-term .cmp-term__check {
+  color: #3ddc84;
+}
+
+.cmp-term .cmp-term__out {
+  color: #9a9aad;
+}
+
+/* block cursor — hard on/off blink */
+.cmp-term .cmp-term__cursor {
+  display: inline-block;
+  width: 1ch;
+  height: 14px;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  background: #d8d8e4;
+  animation: termBlink 1.1s steps(2, jump-none) infinite;
+}
+
+@keyframes termBlink {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-term .cmp-term__cursor {
+    animation: none;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,191 @@
+/* flip-clock — prism/ui — scoped to .cmp-flip */
+
+.cmp-flip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 16px;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #e9e9f2;
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+.cmp-flip,
+.cmp-flip * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- digit card ---- */
+
+.cmp-flip .cmp-flip__card {
+  position: relative;
+  width: 34px;
+  height: 48px;
+  perspective: 240px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  background: #17171f;
+}
+
+.cmp-flip .cmp-flip__half,
+.cmp-flip .cmp-flip__flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+  background: #17171f;
+}
+
+.cmp-flip .cmp-flip__half--top,
+.cmp-flip .cmp-flip__flap--top {
+  top: 0;
+  border-radius: 4px 4px 0 0;
+  background: #1d1d27;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.cmp-flip .cmp-flip__half--bottom,
+.cmp-flip .cmp-flip__flap--bottom {
+  bottom: 0;
+  border-radius: 0 0 4px 4px;
+  background: #17171f;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.45);
+}
+
+.cmp-flip .cmp-flip__glyph {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0;
+  user-select: none;
+}
+
+.cmp-flip .cmp-flip__half--top .cmp-flip__glyph,
+.cmp-flip .cmp-flip__flap--top .cmp-flip__glyph {
+  top: 0;
+}
+
+.cmp-flip .cmp-flip__half--bottom .cmp-flip__glyph,
+.cmp-flip .cmp-flip__flap--bottom .cmp-flip__glyph {
+  top: -24px;
+}
+
+/* ---- hairline split ---- */
+
+.cmp-flip .cmp-flip__seam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-0.5px);
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* ---- flaps ---- */
+
+.cmp-flip .cmp-flip__flap {
+  z-index: 2;
+  opacity: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
+.cmp-flip .cmp-flip__flap--top {
+  transform-origin: 50% 100%;
+  transform: rotateX(0deg);
+}
+
+.cmp-flip .cmp-flip__flap--bottom {
+  transform-origin: 50% 0%;
+  transform: rotateX(90deg);
+}
+
+/* rotation shading — light falls off the folding face */
+.cmp-flip .cmp-flip__flap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.55));
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cmp-flip .cmp-flip__flap--bottom::after {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.55));
+}
+
+/* phase 1: old top folds down, revealing the new static top */
+.cmp-flip .cmp-flip__card.is-flip-a .cmp-flip__flap--top {
+  opacity: 1;
+  animation: flipTop 150ms ease-in forwards;
+}
+
+.cmp-flip .cmp-flip__card.is-flip-a .cmp-flip__flap--top::after {
+  animation: flipShadeDown 150ms ease-in forwards;
+}
+
+/* phase 2: new bottom swings up over the old static bottom */
+.cmp-flip .cmp-flip__card.is-flip-b .cmp-flip__flap--bottom {
+  opacity: 1;
+  animation: flipBottom 150ms ease-out forwards;
+}
+
+.cmp-flip .cmp-flip__card.is-flip-b .cmp-flip__flap--bottom::after {
+  animation: flipShadeUp 150ms ease-out forwards;
+}
+
+@keyframes flipTop {
+  from { transform: rotateX(0deg); }
+  to   { transform: rotateX(-90deg); }
+}
+
+@keyframes flipBottom {
+  from { transform: rotateX(90deg); }
+  to   { transform: rotateX(0deg); }
+}
+
+@keyframes flipShadeDown {
+  from { opacity: 0; }
+  to   { opacity: 0.55; }
+}
+
+@keyframes flipShadeUp {
+  from { opacity: 0.55; }
+  to   { opacity: 0; }
+}
+
+/* ---- colon separators ---- */
+
+.cmp-flip .cmp-flip__colon {
+  height: 48px;
+  line-height: 44px;
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(233, 233, 242, 0.45);
+  user-select: none;
+}
+
+/* ---- reduced motion: instant swap, no flap ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .cmp-flip .cmp-flip__flap,
+  .cmp-flip .cmp-flip__flap::after {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}

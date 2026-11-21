@@ -1,0 +1,1 @@
+{"id": "hold-delete", "name": "Hold to Delete", "tag": "Buttons", "author": "prism/ui", "source": "https://github.com/asomkhattak-spec/vanta-raven-193e", "description": "A destructive-action button that demands a deliberate 1.2-second press-and-hold, sweeping a red progress fill before popping into a satisfying Deleted state.", "scope": "cmp-hold"}

@@ -1,0 +1,1 @@
+{"id": "liquid-tabs", "name": "Liquid Tabs", "tag": "Navigation", "author": "prism/ui", "source": "https://github.com/asomkhattak-spec/vanta-raven-193e", "description": "A dark segmented control whose glass pill springs between Preview, Code, and Ship with overshoot easing, roving-tabindex keyboard support, and reduced-motion fallbacks.", "scope": "cmp-tabs"}

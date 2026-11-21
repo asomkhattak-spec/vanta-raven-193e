@@ -1,0 +1,1 @@
+{"id": "morph-search", "name": "Morph Search", "tag": "Inputs", "author": "prism/ui", "source": "https://github.com/asomkhattak-spec/vanta-raven-193e", "description": "A 44px circular search button that morphs into a 260px input pill with auto-focus, a clear action, and a cyan focus glow, fully keyboard operable.", "scope": "cmp-search"}

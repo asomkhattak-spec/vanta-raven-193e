@@ -1,7 +1,20 @@
 {
   "version": 1,
-  "updated": "2026-11-21T13:28:47.860Z",
+  "updated": "2026-11-21T13:47:30.954Z",
   "components": [
+    {
+      "id": "aurora-badge",
+      "name": "Aurora Badge",
+      "tag": "Display",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "A pill badge with a slowly rotating conic-gradient aurora border and a soft, pulsing ambient glow.",
+      "scope": "cmp-aurora",
+      "files": [
+        "index.css",
+        "index.html"
+      ]
+    },
     {
       "id": "bulb-switch",
       "name": "Lightbulb Switch",
@@ -29,6 +42,20 @@
       ]
     },
     {
+      "id": "elastic-slider",
+      "name": "Elastic Slider",
+      "tag": "Inputs",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "An accessible range slider with a violet gradient fill, an elastic thumb that stretches while dragging, and a floating value bubble that springs in above it.",
+      "scope": "cmp-slider",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ]
+    },
+    {
       "id": "filament-button",
       "name": "Filament Bulb Button",
       "tag": "Buttons",
@@ -39,6 +66,90 @@
       "files": [
         "index.css",
         "index.html"
+      ]
+    },
+    {
+      "id": "flip-clock",
+      "name": "Flip Clock",
+      "tag": "Display",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "A live HH:MM:SS split-flap clock with six folding digit cards, a two-stage 300ms flap animation, and instant swaps under reduced motion.",
+      "scope": "cmp-flip",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ]
+    },
+    {
+      "id": "hold-delete",
+      "name": "Hold to Delete",
+      "tag": "Buttons",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "A destructive-action button that demands a deliberate 1.2-second press-and-hold, sweeping a red progress fill before popping into a satisfying Deleted state.",
+      "scope": "cmp-hold",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ]
+    },
+    {
+      "id": "liquid-tabs",
+      "name": "Liquid Tabs",
+      "tag": "Navigation",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "A dark segmented control whose glass pill springs between Preview, Code, and Ship with overshoot easing, roving-tabindex keyboard support, and reduced-motion fallbacks.",
+      "scope": "cmp-tabs",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ]
+    },
+    {
+      "id": "magnetic-button",
+      "name": "Magnetic Button",
+      "tag": "Buttons",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "A pill button that magnetically drifts toward the cursor with a parallax inner label and a pointer-following radial sheen, then springs back to rest on leave.",
+      "scope": "cmp-magnetic",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ]
+    },
+    {
+      "id": "morph-search",
+      "name": "Morph Search",
+      "tag": "Inputs",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "A 44px circular search button that morphs into a 260px input pill with auto-focus, a clear action, and a cyan focus glow, fully keyboard operable.",
+      "scope": "cmp-search",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ]
+    },
+    {
+      "id": "particle-burst",
+      "name": "Particle Burst Button",
+      "tag": "Buttons",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "A violet-gradient Celebrate button that fires a pooled, gravity-driven confetti burst and ring shockwave on click, hard-capped at 80 live particles.",
+      "scope": "cmp-burst",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
       ]
     },
     {
@@ -62,6 +173,34 @@
       "source": "https://uiverse.io/marcelodolza",
       "description": "Neumorphic button: letters cascade in, paper plane takes off with a contrail on send, check-mark Sent state lands. Improved: JS class state instead of :focus so it survives blur.",
       "scope": "cmp-send",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ]
+    },
+    {
+      "id": "spotlight-card",
+      "name": "Spotlight Card",
+      "tag": "Cards",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "A dark glass card whose cursor-tracking radial spotlight washes the surface and ignites a matching 1px border glow, fading out smoothly on pointer leave.",
+      "scope": "cmp-spotlight",
+      "files": [
+        "index.css",
+        "index.html",
+        "index.js"
+      ]
+    },
+    {
+      "id": "terminal-window",
+      "name": "Terminal Typing",
+      "tag": "Display",
+      "author": "prism/ui",
+      "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+      "description": "A mini macOS terminal that types a prism-ui install command with human-like jitter, prints green-check output lines, and loops on a blinking block cursor.",
+      "scope": "cmp-term",
       "files": [
         "index.css",
         "index.html",
