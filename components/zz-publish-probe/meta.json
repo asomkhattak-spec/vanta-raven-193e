@@ -1,0 +1,9 @@
+{
+  "id": "zz-publish-probe",
+  "name": "Publish Probe",
+  "tag": "Display",
+  "author": "prism/ui",
+  "source": "https://github.com/asomkhattak-spec/vanta-raven-193e",
+  "description": "temporary end-to-end publish test",
+  "scope": "cmp-probe"
+}
